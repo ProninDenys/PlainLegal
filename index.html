@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PlainLegal</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-900 antialiased">
 
@@ -23,7 +29,10 @@
   <section class="text-center py-20 px-6 bg-white shadow-inner">
     <h2 class="text-4xl font-bold mb-4">Understand any legal letter — instantly.</h2>
     <p class="text-lg mb-6">Upload a contract, tax notice, or government letter — we'll explain what it means in plain English.</p>
-    <button class="px-6 py-3 bg-black text-white rounded-lg text-sm">Upload Document</button>
+    <div class="flex flex-col items-center space-y-4">
+      <input type="file" accept="application/pdf,image/*" class="file:border file:border-gray-300 file:py-2 file:px-4 file:rounded file:bg-white file:text-sm file:cursor-pointer" />
+      <button class="px-6 py-2 bg-black text-white rounded-lg text-sm transition hover:bg-gray-800">Explain My Document</button>
+    </div>
   </section>
 
   <!-- How It Works -->
@@ -46,12 +55,12 @@
   <section id="pricing" class="py-20 bg-gray-100 text-center">
     <h3 class="text-2xl font-semibold mb-10">Pricing</h3>
     <div class="flex flex-col md:flex-row justify-center gap-12 px-6">
-      <div class="bg-white p-6 rounded-lg shadow-md">
+      <div class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-lg transition transform hover:-translate-y-1 cursor-pointer">
         <h4 class="text-lg font-semibold mb-2">Single Document</h4>
         <p class="text-2xl font-bold">$2.99</p>
         <p class="text-sm mt-2">Upload one document and get full explanation.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-md border-2 border-black">
+      <div class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer">
         <h4 class="text-lg font-semibold mb-2">Full Access</h4>
         <p class="text-2xl font-bold">$9.99/mo</p>
         <p class="text-sm mt-2">Unlimited documents + templates + priority support.</p>
@@ -59,17 +68,10 @@
     </div>
   </section>
 
-  <!-- Upload Section -->
-  <section class="py-20 bg-white text-center">
-    <h3 class="text-2xl font-semibold mb-6">Upload Your Document</h3>
-    <input type="file" class="mx-auto mb-4 block" />
-    <button class="px-6 py-2 bg-black text-white rounded-lg text-sm">Explain My Document</button>
-  </section>
-
   <!-- Trust Block -->
   <section class="py-20 bg-gray-100 text-center">
     <h3 class="text-2xl font-semibold mb-6">Trusted and Secure</h3>
-    <p>Powered by OpenAI, secured via Stripe, SSL-protected.</p>
+    <p>Your data is private, secure, and never stored.</p>
   </section>
 
   <!-- FAQ -->
@@ -84,8 +86,16 @@
   <!-- Footer -->
   <footer class="text-center text-sm p-6 bg-gray-50">
     <p>&copy; 2025 PlainLegal. All rights reserved.</p>
-    <p><a href="#" class="underline">Terms</a> · <a href="#" class="underline">Privacy</a></p>
+    <p>
+      <a href="/terms.html" class="underline hover:text-gray-600">Terms</a> · 
+      <a href="/privacy.html" class="underline hover:text-gray-600">Privacy</a>
+    </p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
