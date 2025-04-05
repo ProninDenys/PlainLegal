@@ -15,13 +15,15 @@
 <body class="bg-gray-50 text-gray-900 antialiased">
 
   <!-- Header -->
-  <header class="flex items-center justify-between p-6 shadow-sm bg-white">
-    <h1 class="text-xl font-semibold">PlainLegal</h1>
-    <nav class="space-x-6 text-sm">
-      <a href="#how" class="hover:underline">How It Works</a>
-      <a href="#docs" class="hover:underline">Supported Docs</a>
-      <a href="#pricing" class="hover:underline">Pricing</a>
-      <a href="#faq" class="hover:underline">FAQ</a>
+  <header class="flex items-center justify-between px-12 py-6 shadow-sm bg-white">
+    <a href="/">
+      <img src="/img/Снимок экрана 2025-04-05 в 11.58.28.png" alt="PlainLegal Logo" class="h-20 w-auto" />
+    </a>
+    <nav class="flex space-x-8 text-sm font-medium">
+      <a href="#how" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">How It Works</a>
+      <a href="#docs" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">Supported Docs</a>
+      <a href="#pricing" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">Pricing</a>
+      <a href="#faq" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">FAQ</a>
     </nav>
   </header>
 
@@ -46,9 +48,9 @@
   </section>
 
   <!-- Supported Documents -->
-  <section id="docs" class="py-20 bg-white text-center">
+  <section id="docs" class="py-20 bg-white text-center px-6">
     <h3 class="text-2xl font-semibold mb-6">Supported Documents</h3>
-    <p>IRS letters, USCIS forms, Leases, Evictions, Insurance policies, and more...</p>
+    <p class="max-w-4xl mx-auto">IRS letters, USCIS forms, Leases, Evictions, Insurance policies, Bank Statements, Court Notices, Immigration Papers, Debt Collection Letters, Credit Reports, Contracts, Employment Offers, and more...</p>
   </section>
 
   <!-- Pricing -->
@@ -69,36 +71,42 @@
   </section>
 
   <!-- Trust Block -->
-  <section class="py-20 bg-gray-100 text-center">
+  <section class="py-10 bg-gray-100 text-center">
     <h3 class="text-2xl font-semibold mb-6">Trusted and Secure</h3>
     <p>Your data is private, secure, and never stored.</p>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-20 bg-white text-center">
+  <section id="faq" class="py-20 bg-white text-center px-6">
     <h3 class="text-2xl font-semibold mb-6">FAQ</h3>
-    <p class="mb-2"><strong>Q:</strong> Is my data secure?</p>
-    <p class="mb-6"><strong>A:</strong> Yes, your documents are encrypted and never stored.</p>
-    <p class="mb-2"><strong>Q:</strong> Can I upload a photo?</p>
-    <p><strong>A:</strong> Yes, PDF or image formats are supported.</p>
+    <div class="max-w-3xl mx-auto space-y-6 text-center">
+      <div><strong>Q:</strong> Is my data secure?<br><strong>A:</strong> Yes, your documents are encrypted and never stored.</div>
+      <div><strong>Q:</strong> Can I upload a photo?<br><strong>A:</strong> Yes, PDF or image formats are supported.</div>
+      <div><strong>Q:</strong> What if I upload a handwritten note?<br><strong>A:</strong> We support typed documents only. Handwritten text may not be fully recognized.</div>
+      <div><strong>Q:</strong> Is payment secure?<br><strong>A:</strong> Yes, all payments are securely processed via Stripe.</div>
+      <div><strong>Q:</strong> Can I use this service from my phone?<br><strong>A:</strong> Yes, our site works on mobile, tablet, and desktop.</div>
+      <div><strong>Q:</strong> What file types are supported?<br><strong>A:</strong> PDF, PNG, JPG, and other image files.</div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center text-sm p-6 bg-gray-50">
-    <p>&copy; 2025 PlainLegal. All rights reserved.</p>
-    <p>
-      <a href="/terms.html" class="underline hover:text-gray-600">Terms</a> · 
-      <a href="/privacy.html" class="underline hover:text-gray-600">Privacy</a>
-    </p>
+  <footer class="flex flex-col items-center text-center p-6 bg-gray-50 text-sm">
+    <a href="/" class="mb-2">
+      <img src="/img/PLAIN LEGAL.png" alt="Logo" class="h-10 w-auto" />
+    </a>
+    <div class="space-x-6">
+      <a href="/terms.html" class="text-gray-600 hover:text-black underline transition">Terms</a>
+      <a href="/privacy.html" class="text-gray-600 hover:text-black underline transition">Privacy</a>
+    </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
-<script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
-</script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
-<script src="script.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.5/dist/tesseract.min.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </html>
