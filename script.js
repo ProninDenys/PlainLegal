@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedFile = null;
   let extractedText = "";
 
-  // Скрываем результат по умолчанию
   resultDiv.classList.add('hidden');
 
   fileInput.addEventListener('change', (event) => {
@@ -48,8 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (data.explanation) {
         const fullText = data.explanation.trim();
+        localStorage.setItem('fullExplanation', fullText);
         const words = fullText.split(" ");
-        const preview = words.slice(0, 30).join(" ");
+        const preview = words.slice(0, 30).join(" "); // Показать первые 30 слов
 
         resultDiv.innerHTML = `
           <h3 class='text-lg font-semibold mb-2'>Explanation:</h3>
@@ -58,11 +58,33 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="text-blue-600 font-medium">To read the full explanation, please upgrade your access.</span>
           </p>
           <div class="mt-4">
-            <a href="/checkout.html" class="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded transition">
+            <button id="upgradeBtn" class="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded transition">
               Upgrade Now
-            </a>
+            </button>
           </div>
         `;
+
+        document.getElementById("upgradeBtn").addEventListener("click", async () => {
+          try {
+            const sessionRes = await fetch("http://127.0.0.1:5001/create-checkout-session", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({})
+            });
+
+            const session = await sessionRes.json();
+
+            if (session.url) {
+              window.location.href = session.url; // Редирект на Stripe
+            } else {
+              alert("Error creating checkout session.");
+            }
+          } catch (err) {
+            console.error("Stripe error:", err);
+            alert("Stripe connection failed.");
+          }
+        });
+
       } else {
         resultDiv.innerHTML = `<p class='text-red-600'>Error: ${data.error || 'Something went wrong.'}</p>`;
       }

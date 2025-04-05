@@ -1,0 +1,41 @@
+<!-- ✅ login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen">
+  <form id="loginForm" class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Login</h2>
+    <input type="email" id="email" placeholder="Email" class="w-full p-3 border mb-4 rounded" required>
+    <input type="password" id="password" placeholder="Password" class="w-full p-3 border mb-4 rounded" required>
+    <button type="submit" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition">Log In</button>
+    <p class="text-sm text-center mt-4">Don't have an account? <a href="register.html" class="text-blue-600 underline">Register</a></p>
+  </form>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const res = await fetch('http://localhost:5001/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('token', data.token);
+        alert('Login successful!');
+        window.location.href = 'index.html';
+      } else {
+        alert(data.error || 'Login failed');
+      }
+    });
+  </script>
+</body>
+</html>
