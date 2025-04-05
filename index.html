@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,57 +13,66 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900 antialiased">
 
- <!-- Header -->
-<header class="flex items-center justify-between px-12 py-6 shadow-sm bg-white">
-  <a href="/">
-    <img src="/img/Снимок экрана 2025-04-05 в 11.58.28.png" alt="PlainLegal Logo" class="h-20 w-auto" />
-  </a>
 
-  <nav class="flex space-x-8 text-sm font-medium items-center">
-    <a href="#how" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      How It Works
+  <!-- Header -->
+  <header class="flex items-center justify-between px-12 py-6 shadow-sm bg-white">
+    <a href="/">
+      <img src="/img/Снимок экрана 2025-04-05 в 11.58.28.png" alt="PlainLegal Logo" class="h-20 w-auto" />
     </a>
-    <a href="#docs" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      Supported Docs
-    </a>
-    <a href="#pricing" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      Pricing
-    </a>
-    <a href="#faq" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      FAQ
-    </a>
-    <a id="loginBtn" href="#" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      Log In
-    </a>
-    <a id="registerBtn" href="#" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
-      Register
-    </a>
-  </nav>
-</header>
- <!-- Hero Section -->
-<section class="text-center py-20 px-6 bg-white shadow-inner">
-  <h2 class="text-4xl font-bold mb-8">Understand any legal letter — instantly.</h2>
-  
-  <p class="text-lg mb-10">
-    Upload a contract, tax notice, or government letter — we'll explain what it means in plain English.
-  </p>
-  
-  <div class="flex flex-col items-center space-y-8">
-    <input id="fileInput" type="file" accept="application/pdf,image/*"
-      class="file:border file:border-gray-300 file:py-2 file:px-4 file:rounded file:bg-white file:text-sm file:cursor-pointer" />
-    
-    <button id="explainBtn"
-      class="px-6 py-2 bg-black text-white rounded-lg text-sm transition hover:bg-gray-800">
-      Explain My Document
-    </button>
 
-    <!-- Это появится только после загрузки -->
-    <div id="resultContainer"
-      class="hidden mt-10 max-w-2xl mx-auto text-left p-4 bg-white border border-gray-200 rounded shadow"></div>
-  </div>
-</section>
+    <nav class="flex space-x-8 text-sm font-medium items-center">
+      <a href="#how"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        How It Works
+      </a>
+      <a href="#docs"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        Supported Docs
+      </a>
+      <a href="#pricing"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        Pricing
+      </a>
+      <a href="#faq"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        FAQ
+      </a>
+      <a href="/login.html"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        Log In
+      </a>
+      <a href="/register.html"
+        class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-300 hover:to-purple-400 hover:text-white px-3 py-1 rounded transition-all duration-200">
+        Register
+      </a>
+    </nav>
+  </header>
+
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-6 bg-white shadow-inner">
+    <h2 class="text-4xl font-bold mb-8">Understand any legal letter — instantly.</h2>
+
+    <p class="text-lg mb-10">
+      Upload a contract, tax notice, or government letter — we'll explain what it means in plain English.
+    </p>
+
+    <div class="flex flex-col items-center space-y-8">
+      <input id="fileInput" type="file" accept="application/pdf,image/*"
+        class="file:border file:border-gray-300 file:py-2 file:px-4 file:rounded file:bg-white file:text-sm file:cursor-pointer" />
+
+      <button id="explainBtn" class="px-6 py-2 bg-black text-white rounded-lg text-sm transition hover:bg-gray-800">
+        Explain My Document
+      </button>
+
+      <!-- Это появится только после загрузки -->
+      <div id="resultContainer"
+        class="hidden mt-10 max-w-2xl mx-auto text-left p-4 bg-white border border-gray-200 rounded shadow"></div>
+    </div>
+  </section>
 
   <!-- How It Works -->
   <section id="how" class="py-20 bg-gray-100 text-center">
@@ -77,19 +87,23 @@
   <!-- Supported Documents -->
   <section id="docs" class="py-20 bg-white text-center px-6">
     <h3 class="text-2xl font-semibold mb-6">Supported Documents</h3>
-    <p class="max-w-4xl mx-auto">IRS letters, USCIS forms, Leases, Evictions, Insurance policies, Bank Statements, Court Notices, Immigration Papers, Debt Collection Letters, Credit Reports, Contracts, Employment Offers, and more...</p>
+    <p class="max-w-4xl mx-auto">IRS letters, USCIS forms, Leases, Evictions, Insurance policies, Bank Statements, Court
+      Notices, Immigration Papers, Debt Collection Letters, Credit Reports, Contracts, Employment Offers, and more...
+    </p>
   </section>
 
   <!-- Pricing -->
   <section id="pricing" class="py-20 bg-gray-100 text-center">
     <h3 class="text-2xl font-semibold mb-10">Pricing</h3>
     <div class="flex flex-col md:flex-row justify-center gap-12 px-6">
-      <div class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-lg transition transform hover:-translate-y-1 cursor-pointer">
+      <div
+        class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-lg transition transform hover:-translate-y-1 cursor-pointer">
         <h4 class="text-lg font-semibold mb-2">Single Document</h4>
         <p class="text-2xl font-bold">$2.99</p>
         <p class="text-sm mt-2">Upload one document and get full explanation.</p>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer">
+      <div
+        class="bg-white p-6 rounded-lg shadow-md border-2 border-black hover:shadow-xl transition transform hover:-translate-y-1 cursor-pointer">
         <h4 class="text-lg font-semibold mb-2">Full Access</h4>
         <p class="text-2xl font-bold">$9.99/mo</p>
         <p class="text-sm mt-2">Unlimited documents + templates + priority support.</p>
@@ -107,12 +121,18 @@
   <section id="faq" class="py-20 bg-white text-center px-6">
     <h3 class="text-2xl font-semibold mb-6">FAQ</h3>
     <div class="max-w-3xl mx-auto space-y-6 text-center">
-      <div><strong>Q:</strong> Is my data secure?<br><strong>A:</strong> Yes, your documents are encrypted and never stored.</div>
-      <div><strong>Q:</strong> Can I upload a photo?<br><strong>A:</strong> Yes, PDF or image formats are supported.</div>
-      <div><strong>Q:</strong> What if I upload a handwritten note?<br><strong>A:</strong> We support typed documents only. Handwritten text may not be fully recognized.</div>
-      <div><strong>Q:</strong> Is payment secure?<br><strong>A:</strong> Yes, all payments are securely processed via Stripe.</div>
-      <div><strong>Q:</strong> Can I use this service from my phone?<br><strong>A:</strong> Yes, our site works on mobile, tablet, and desktop.</div>
-      <div><strong>Q:</strong> What file types are supported?<br><strong>A:</strong> PDF, PNG, JPG, and other image files.</div>
+      <div><strong>Q:</strong> Is my data secure?<br><strong>A:</strong> Yes, your documents are encrypted and never
+        stored.</div>
+      <div><strong>Q:</strong> Can I upload a photo?<br><strong>A:</strong> Yes, PDF or image formats are supported.
+      </div>
+      <div><strong>Q:</strong> What if I upload a handwritten note?<br><strong>A:</strong> We support typed documents
+        only. Handwritten text may not be fully recognized.</div>
+      <div><strong>Q:</strong> Is payment secure?<br><strong>A:</strong> Yes, all payments are securely processed via
+        Stripe.</div>
+      <div><strong>Q:</strong> Can I use this service from my phone?<br><strong>A:</strong> Yes, our site works on
+        mobile, tablet, and desktop.</div>
+      <div><strong>Q:</strong> What file types are supported?<br><strong>A:</strong> PDF, PNG, JPG, and other image
+        files.</div>
     </div>
   </section>
 
@@ -136,4 +156,5 @@
   <script src="script.js"></script>
 
 </body>
+
 </html>
