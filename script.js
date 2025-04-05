@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.querySelector('input[type="file"]');
-  const explainButton = document.querySelector('#explainBtn');
-  const resultDiv = document.querySelector('#resultContainer');
+  const explainButton = document.querySelector('button');
+  const resultDiv = document.getElementById('resultContainer');
 
   let selectedFile = null;
   let extractedText = "";
 
-  // Скрыть результат по умолчанию
+  // Скрываем результат по умолчанию
   resultDiv.classList.add('hidden');
 
   fileInput.addEventListener('change', (event) => {
     selectedFile = event.target.files[0];
-    resultDiv.classList.add('hidden'); // скрыть результат при новом выборе файла
+    resultDiv.classList.add('hidden');
     resultDiv.innerHTML = "";
   });
 
@@ -23,22 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const fileType = selectedFile.type;
+    resultDiv.classList.remove('hidden');
+    resultDiv.innerHTML = "<p>Scanning, please wait...</p>";
 
     if (fileType === 'application/pdf') {
       await extractTextFromPDF(selectedFile);
     } else if (fileType.startsWith('image/')) {
       await extractTextFromImage(selectedFile);
     } else {
-      resultDiv.classList.remove('hidden');
       resultDiv.innerHTML = "<p class='text-red-600'>Unsupported file type. Please upload a PDF or image.</p>";
       return;
     }
 
-    // Показать результат
-    resultDiv.classList.remove('hidden');
-    resultDiv.innerHTML = "<p>Asking AI to explain...</p>";
-
     try {
+      resultDiv.innerHTML = "<p>Asking AI to explain...</p>";
+
       const response = await fetch('http://127.0.0.1:5001/api/explain', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,9 +47,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = await response.json();
 
       if (data.explanation) {
+        const fullText = data.explanation.trim();
+        const words = fullText.split(" ");
+        const preview = words.slice(0, 30).join(" ");
+
         resultDiv.innerHTML = `
           <h3 class='text-lg font-semibold mb-2'>Explanation:</h3>
-          <p class='leading-relaxed text-gray-800'>${data.explanation}</p>`;
+          <p class='leading-relaxed text-gray-800'>
+            ${preview}...<br/><br/>
+            <span class="text-blue-600 font-medium">To read the full explanation, please upgrade your access.</span>
+          </p>
+          <div class="mt-4">
+            <a href="/checkout.html" class="bg-black hover:bg-gray-800 text-white py-2 px-4 rounded transition">
+              Upgrade Now
+            </a>
+          </div>
+        `;
       } else {
         resultDiv.innerHTML = `<p class='text-red-600'>Error: ${data.error || 'Something went wrong.'}</p>`;
       }
@@ -60,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Обработка PDF
   async function extractTextFromPDF(file) {
     const reader = new FileReader();
     return new Promise((resolve) => {
@@ -84,10 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Обработка изображения
   async function extractTextFromImage(file) {
     const imageURL = URL.createObjectURL(file);
-    resultDiv.classList.remove('hidden');
     resultDiv.innerHTML = "<p>Scanning image, please wait...</p>";
 
     const { data: { text } } = await Tesseract.recognize(imageURL, 'eng', {
