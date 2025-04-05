@@ -27,15 +27,28 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="text-center py-20 px-6 bg-white shadow-inner">
-    <h2 class="text-4xl font-bold mb-4">Understand any legal letter — instantly.</h2>
-    <p class="text-lg mb-6">Upload a contract, tax notice, or government letter — we'll explain what it means in plain English.</p>
-    <div class="flex flex-col items-center space-y-4">
-      <input type="file" accept="application/pdf,image/*" class="file:border file:border-gray-300 file:py-2 file:px-4 file:rounded file:bg-white file:text-sm file:cursor-pointer" />
-      <button class="px-6 py-2 bg-black text-white rounded-lg text-sm transition hover:bg-gray-800">Explain My Document</button>
-    </div>
-  </section>
+ <!-- Hero Section -->
+<section class="text-center py-20 px-6 bg-white shadow-inner">
+  <h2 class="text-4xl font-bold mb-8">Understand any legal letter — instantly.</h2>
+  
+  <p class="text-lg mb-10">
+    Upload a contract, tax notice, or government letter — we'll explain what it means in plain English.
+  </p>
+  
+  <div class="flex flex-col items-center space-y-8">
+    <input id="fileInput" type="file" accept="application/pdf,image/*"
+      class="file:border file:border-gray-300 file:py-2 file:px-4 file:rounded file:bg-white file:text-sm file:cursor-pointer" />
+    
+    <button id="explainBtn"
+      class="px-6 py-2 bg-black text-white rounded-lg text-sm transition hover:bg-gray-800">
+      Explain My Document
+    </button>
+
+    <!-- Это появится только после загрузки -->
+    <div id="resultContainer"
+      class="hidden mt-10 max-w-2xl mx-auto text-left p-4 bg-white border border-gray-200 rounded shadow"></div>
+  </div>
+</section>
 
   <!-- How It Works -->
   <section id="how" class="py-20 bg-gray-100 text-center">

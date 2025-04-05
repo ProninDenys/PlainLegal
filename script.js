@@ -1,20 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
   const fileInput = document.querySelector('input[type="file"]');
-  const explainButton = document.querySelector('button');
-  const resultDiv = document.createElement('div');
-  resultDiv.className = "mt-6 max-w-2xl mx-auto text-left p-4 bg-white border border-gray-200 rounded shadow";
-  explainButton.parentNode.appendChild(resultDiv);
+  const explainButton = document.querySelector('#explainBtn');
+  const resultDiv = document.querySelector('#resultContainer');
 
   let selectedFile = null;
   let extractedText = "";
 
+  // Скрыть результат по умолчанию
+  resultDiv.classList.add('hidden');
+
   fileInput.addEventListener('change', (event) => {
     selectedFile = event.target.files[0];
+    resultDiv.classList.add('hidden'); // скрыть результат при новом выборе файла
     resultDiv.innerHTML = "";
   });
 
   explainButton.addEventListener('click', async () => {
     if (!selectedFile) {
+      resultDiv.classList.remove('hidden');
       resultDiv.innerHTML = "<p class='text-red-600'>Please upload a file first.</p>";
       return;
     }
@@ -26,14 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (fileType.startsWith('image/')) {
       await extractTextFromImage(selectedFile);
     } else {
+      resultDiv.classList.remove('hidden');
       resultDiv.innerHTML = "<p class='text-red-600'>Unsupported file type. Please upload a PDF or image.</p>";
       return;
     }
 
-    // Отправка текста на сервер
-    try {
-      resultDiv.innerHTML = "<p>Asking AI to explain...</p>";
+    // Показать результат
+    resultDiv.classList.remove('hidden');
+    resultDiv.innerHTML = "<p>Asking AI to explain...</p>";
 
+    try {
       const response = await fetch('http://127.0.0.1:5001/api/explain', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -82,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Обработка изображения
   async function extractTextFromImage(file) {
     const imageURL = URL.createObjectURL(file);
+    resultDiv.classList.remove('hidden');
     resultDiv.innerHTML = "<p>Scanning image, please wait...</p>";
 
     const { data: { text } } = await Tesseract.recognize(imageURL, 'eng', {
